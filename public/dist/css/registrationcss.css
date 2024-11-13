@@ -1,0 +1,306 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/dist/css/images/reg_des.jpg') no-repeat center center fixed;
+    /* background: linear-gradient(to right, #B8B8FF, #B8B8FF); */
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.205);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left, .right {
+    padding: 20px;
+    width: 50%;
+}
+
+.left {
+    background: linear-gradient(to bottom, #9381FF, #9381FF);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left .logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.left .logo h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.left p {
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+.left .get-started {
+    background: white;
+    color: #2575fc;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.left .get-started:hover {
+    background: #e3e3e3;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #9381FF, #9381FF);
+}
+
+.register-form {
+    width: 100%; 
+    max-width: 90%;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+}
+
+.register-form h2 {
+    margin: 0 0 15px;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.form-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.form-group input,
+.register-form select {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.project-type-label {
+    display: block;
+    font-size: 4.0rem; /* Adjust the font size here */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Change the text color */
+    margin-bottom: 10px; /* Add some space below the label */
+    text-align: center; /* Center align the text */
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 0;
+    justify-content: center;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    padding-left: 40px;
+    font-size: 1rem; /* Adjust the font size here */
+    user-select: none;
+    color: #333;
+}
+
+.checkbox-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-item .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: background 0.3s, border 0.3s;
+}
+
+.checkbox-item input:checked ~ .checkmark {
+    background-color: #25fcbb;
+    border: 1px solid #1c9b84;
+}
+
+.checkbox-item .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-item .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-item .checkbox-label {
+    margin-left: 10px;
+    font-size: 1rem; /* Adjust the font size here */
+}
+
+
+.select-wrapper {
+    position: relative;
+    margin-top: 10px;
+}
+
+.select-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.register-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 10px 10px 40px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.register-form select:focus {
+    border-color: #2575fc;
+}
+
+.register-form .sign-up {
+    width: 100%;
+    padding: 12px;
+    background: #011029;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1rem;
+}
+
+.register-form .sign-up:hover {
+    background: #000a1d;
+}
+
+.response-details h2 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.response-details p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .register-form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .left .logo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .left .logo h2 {
+        font-size: 1.2rem;
+    }
+
+    .left p {
+        font-size: 0.8rem;
+    }
+
+    .left .get-started {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+
+    .register-form h2 {
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .register-form select {
+        padding: 8px 10px 8px 40px;
+    }
+
+    .register-form .sign-up {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}

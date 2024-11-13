@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 10px 0; /* Adding margin at the top and bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 20px); /* Adjusting height to account for margins */
+    background: url('/dist/css/images/reg_des.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: calc(100% - 20px); /* Adjusting height to account for margins */
+}
+
+.left, .right {
+    padding: 20px;
+    width: 50%;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #9381FF;
+}
+
+.left .logo {
+    text-align: center;
+}
+
+.left .logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.left h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.left p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.left .get-started {
+    background: #011029;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.left .get-started:hover {
+    background: #e3e3e3;
+}
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #9381FF, #9381FF);
+}
+
+.register-form {
+    width: 100%; 
+    max-width: 90%;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+}
+.register-form h2 {
+    margin: 0 0 15px;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+
+/* .right .register-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.right h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+} */
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+.form-group input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+
+
+.sign-up {
+    width: 100%;
+    padding: 10px;
+    background-color: #011029;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
