@@ -100,9 +100,12 @@ Route::get('/download-file', [InvoiceController::class, 'downloadFile'])->name('
 
 
 
-Route::get('/report/{id}/{layout_type}', [ClientPublicController::class, 'report'])->name('report');
+Route::get('/report/{id}/{layout_type}/{layout_status}', [ClientPublicController::class, 'report'])->name('report');
 Route::post('/Customfile',[ClientPublicController::class, 'Customfile'])->name('Customfile');
 Route::post('/client_details_order',[ClientPublicController::class,'client_details_order'])->name('client_details_order');
+Route::get('/report/{id}/{layout_status}', [ClientPublicController::class, 'layoutstatus'])->name('approve.layout.status');
+
+route::get('/getuploadupdate/{id}', [ClientPublicController::class, 'getuploadupdate'])->name('getuploadupdate');
 // Route::post('/upload',[InvoiceController::class, 'uploadInvoice'])->name('update.invoice');
 
 // CREATED BY RAMU SHARMA END

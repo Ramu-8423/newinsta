@@ -77,14 +77,14 @@ th>b {
 }
 </style>
 <div class="page-wrapper">
-    <div class="card-body" style="display:flex;justify-content:end;">
-        <a style="margin-left:10px;"><button class="btn btn-primary" onclick="history.back()">back</button></a>
+    <div class="mr-3" style="display:flex;justify-content:end;">
+        <a style="margin-left:10px;"><button class="btn btn-primary btn-sm mt-3 mr-2" onclick="history.back()">back</button></a>
     </div>
-    <div class="container-fluid mt-1">
+    <div class="container-fluid ">
         <table class="table table-bordered responcive">
             <tbody id="sortable-body">
                 @php
-                $ver = json_decode($details->report_layout_order);
+                $ver = json_decode($details->default_layout);
                 @endphp
                 @foreach($ver as $value)
                 @php
@@ -96,20 +96,16 @@ th>b {
         </table>
     </div>
 </div>
-
-
-
 <div class="card-body" style="display:flex;justify-content:end;">
-    <a><button class="btn btn-primary">Edit</button></a>
-    <a style="margin-left:10px;"><button class="btn btn-primary">Submit Form</button></a>
+  <a href="{{ route('approve.layout.status', ['id' => $id, 'layout_status' => $layout_status]) }}" style="margin-left:10px;">
+    <button class="btn btn-success btn-sm">Approve</button>
+</a>
+
 </div>
    <script
                                 src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
                             <script>
                                 var client_id_js = @json($id);
-                                var remark_status = @json($details -> remark_status);
-                                var progress_status = @json($details -> progress_status);
-                                console.log(client_id_js, progress_status, remark_status);
                                 var sortable = new Sortable(document.getElementById('sortable-body'), {
                                     animation: 150,
                                     handle: 'tr', // Allow row dragging
@@ -133,8 +129,6 @@ th>b {
                                             body: JSON.stringify({
                                                 order: order,
                                                 id: client_id_js,
-                                                progress_status: progress_status,
-                                                remark_status: remark_status
                                             }) // Send the new order as JSON
                                         }).then(response => {
                                             if (response.ok) {

@@ -142,7 +142,7 @@
                         </a>
                     </li>
                 </ul>
-                <button class="btn btn-primary" onclick="goBack()" style="margin-right:25px;">Back</button>
+                <button class="btn btn-primary " onclick="goBack()" style="margin-right:25px;">Back</button>
             </div>
             <!-- Tab panes -->
             <div class="tab-content tabcontent-border">
@@ -320,7 +320,7 @@
                                         class="col-sm-3 text-left control-label col-form-label">Authorized Signatory
                                         Name :</label>
                                     <div class="col-sm-9">
-                                        <input
+                                        <inputm
                                             type="{{($details->progress_status==1||($details->progress_status==2&&$details->remark_status==1))?'text':'hidden'}}"
                                             class="form-control" id="lname" name="signatory_name"
                                             placeholder="Enter authorized signatory name.."
@@ -631,100 +631,27 @@
                                         @endif
                                     </td>
                                     <td class="text-center"><a
-                                            href="{{route('report', ['id' => $report->id , 'layout_type' => $report->layout_type] )}}"><button
+                                            href="{{route('report', ['id' => $report->id , 'layout_type' => $report->layout_type, 'layout_status' => $report->layout_status ] )}}"><button
                                                 class="btn btn-secondary btn-sm">View</button></a></td>
                                     <td class="text-center">
                                         @if($report->layout_status == 1)
                                         <button class="btn btn-warning btn-sm">Pending</button>
                                         @elseif($report->layout_status == 2)
-                                        <button class="btn btn-success btn-sm">Approve</button>
+                                        <button class="btn btn-success btn-sm">Approved</button>
                                         @elseif($report->layout_status == 3)
-                                        <button class="btn btn-danger btn-sm">End</button>
+                                        <button class="btn btn-danger btn-sm">Edit</button>
                                         @else
                                         <button class="btn btn-secondary btn-sm">Unknown</button>
                                         @endif
                                     </td>
 
                                     <td class="text-center">
-                                        @php
-                                        $report_layout_name =
-                                        $report->project_type == 1 ? 'Custom Address Layout' :
-                                        ($report->project_type == 2 ? 'Custom Site Investigation Layout' :
-                                        ($report->project_type == 3 ? 'Custom Digital Address Verification Layout' :
-                                        'Default Layout'));
-                                        @endphp
-                                        <div class="dropdown">
-                                            <button class="btn btn-warning btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton_{{$report->id}}" data-toggle="dropdown">
-                                                Action
-                                            </button>
-                                            <div class="dropdown-menu"
-                                                aria-labelledby="dropdownMenuButton_{{$report->id}}">
-                                                <a class="dropdown-item" href="#">Default Layout</a>
-                                                <a class="dropdown-item" data-toggle="modal"
-                                                    data-target="#rejectModal_{{$report->id}}">Custom Layout</a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Modal for custom layout image upload -->
-                                        <div class="modal fade" id="rejectModal_{{$report->id}}" tabindex="-1"
-                                            aria-labelledby="rejectModalLabel_{{$report->id}}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered"
-                                                style="max-width:600px; width:90%; margin: auto;">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn-close ml-auto btn-sm"
-                                                            data-dismiss="modal" aria-label="Close"
-                                                            style="background-color: #5e60a9; color: white; padding: 6px 12px; border-radius: 5px; cursor: pointer;">
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                    <div class="card">
-                                                        <form class="form-horizontal" action="{{route('Customfile')}}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="card-body">
-                                                                <div class="row justify-content-center">
-                                                                    <h5 class="text-center mx-auto">
-                                                                        {{ $report_layout_name }}</h5>
-                                                                    <p class="text-center mx-auto">Project Type:
-                                                                        {{$report->project_type}}</p>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <!-- Hidden fields to store unique values for each report -->
-                                                                    <input type="hidden" name="id"
-                                                                        value="{{$report->id}}">
-                                                                    <input type="hidden" name="layout_type"
-                                                                        value="{{$report->layout_type}}">
-                                                                    <input type="hidden" name="project_type"
-                                                                        value="{{$report->project_type}}">
-                                                                    <input type="hidden" name="client_id"
-                                                                        value="{{$report->client_id}}">
-                                                                    <input type="hidden" name="layout_status"
-                                                                        value="{{$report->layout_status}}">
-
-                                                                    <label for="customfile"
-                                                                        class="col-sm-2 text-right control-label col-form-label">
-                                                                        File</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="file" name="customfile"
-                                                                            class="form-control" id="customfile"
-                                                                            placeholder="Choose file here">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="border-top">
-                                                                <div class="card-body text-center">
-                                                                    <button type="submit" class="btn btn-primary"
-                                                                        style="background-color: #5e60a9; color: white;">Upload</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End of Modal -->
+                                        @if($report->layout_type == 2)
+                                         <a  href="{{route('report', ['id' => $report->id , 'layout_type' => 1, 'layout_status' => $report->layout_status ] )}}"><button class="btn btn-primary btn-sm">Default Layout</button></a>
+                                        @else
+                                        <a  href="{{route('getuploadupdate', ['id' => $report->id])}}"><button class="btn btn-primary btn-sm">Custom Layout</button></a>
+                                         <!--<a  data-toggle="modal" data-target="#rejectModal_{{$report->id}}"><button class="btn btn-primary btn-sm">Custom Layout</button></a>-->
+                                        @endif
                                     </td>
 
                                 </tr>

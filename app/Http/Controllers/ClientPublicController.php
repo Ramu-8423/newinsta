@@ -379,20 +379,24 @@ class ClientPublicController extends Controller
             
         return response()->json(['status' => '$request']);
      }
-        public function report($id,$layout_type){
-           
-            if($layout_type == 1){
-                 $column_layout = DB::table('verifications')->where('id',1)->first();
-             $details = DB::table('client_details')->where('id',$id)->first();
-            //  dd($column_layout,$details);
-              return view('report.report')->with([
-                  'column_layout'=> $column_layout,
-                  'id'=> $id,
-                  'details' => $details
-                  ]);
-              
+     
+       public function report($id, $layout_type, $layout_status) {
+            if ($layout_type == 1) {
+                $column_layout = DB::table('verifications')->where('id', 1)->first();
+                $details = DB::table('report_layout')->where('id', $id)->first();
+                
+                return view('report.report')->with([
+                    'column_layout' => $column_layout,
+                    'id' => $id,
+                    'layout_status' => $layout_status,
+                    'details' => $details
+                ]);
+            } if($layout_type == 2) {
+                $details = DB::table('report_layout')->where('id', $id)->get();
+              return view('report.costom')->with(['details' => $details]);
             }
         }
+
         
           public function Customfile(Request $request){
              $request->validate([
@@ -410,7 +414,6 @@ class ClientPublicController extends Controller
                  $file->move(public_path('spendingfile'), $filename); 
                  $data = [
                      'custom_layout' => $filePath,
-                     'layout_status' => 2,
                      'layout_type' => 2,
                      'updated_at' => now(),
                  ];
@@ -430,6 +433,19 @@ class ClientPublicController extends Controller
                    ]);
                return response()->json(['status' => '$request']);
             }
+            
+            public function layoutstatus($id, $layout_status) {
+                $update = DB::table('report_layout')->where('id', $id)->update([
+                    'layout_status' => 2
+                ]);
+                return redirect()->route('client_onboarding')->with('success', 'Approved successfully');
+        }
+        
+          public function getuploadupdate($id){
+           $report_details = DB::table('report_layout')->where('id',$id)->first();
+          
+           return view('report.getuploadupdate')->with(['report' => $report_details]);
+        }
 }
 
 
